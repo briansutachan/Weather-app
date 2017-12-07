@@ -47,7 +47,7 @@ function addIcon(w){
         icon.src = `img/thunderstorm.png`          
     }
     if(w == "Clear"){
-        icon.src = `img/sunny.png`
+        icon.src = `img/sun.png`
     }
 }
 
@@ -57,6 +57,7 @@ function getWeather(zipCode){
         url: `${api_root}${zipCode},us&appid=${api_key}`,
         dataType: `json`,
         success: function(data){
+            addIcon(data.weather["0"].main)
             console.log(data)
             temper = kelvinToFahrenheit(data.main.temp)
             console.log(data.weather[0].main)
